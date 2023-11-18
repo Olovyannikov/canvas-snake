@@ -1,9 +1,12 @@
 import {Canvas} from "../entities/Canvas";
+import s from './Game.module.scss';
 
 export const Game = () => {
     const draw = (ctx: CanvasRenderingContext2D) => {}
 
     return (
-        <Canvas draw={draw} />
+        <div className={s.root}>
+            <Canvas draw={draw} />
+        </div>
     )
 }
