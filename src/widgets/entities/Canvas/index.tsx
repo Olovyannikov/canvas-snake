@@ -1,7 +1,7 @@
+import {forwardRef, useEffect} from "react";
 import type {DetailedHTMLProps, HTMLAttributes, RefObject} from "react";
 
 import s from './Canvas.module.scss';
-import {forwardRef, useEffect} from "react";
 
 interface CanvasProps extends DetailedHTMLProps<HTMLAttributes<HTMLCanvasElement>, HTMLCanvasElement> {
     draw: (ctx: CanvasRenderingContext2D) => void;
@@ -16,6 +16,8 @@ export const Canvas = forwardRef<HTMLCanvasElement, CanvasProps>(({draw, ...prop
         if (!ref || !canvas || !ctx) return;
 
         draw(ctx);
+
+        return () => ctx.clearRect(0, 0, window.innerWidth, 400);
     }, [draw, ref])
 
     if (!ref) return null;
