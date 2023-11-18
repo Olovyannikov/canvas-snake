@@ -6,11 +6,11 @@ import {useSnakeGame} from "./useSnakeGame.ts";
 
 export const Game = () => {
     const canvasRef = useRef<HTMLCanvasElement | null>(null);
-    const {snakeBody} = useSnakeGame();
+    const {snakeBody, onSnakeMove} = useSnakeGame();
     const onDrawHandler = (ctx: CanvasRenderingContext2D) => draw({ctx, body: snakeBody})
 
     return (
-        <div className={s.root}>
+        <div tabIndex={0} className={s.root} onKeyDown={onSnakeMove}>
             <Canvas ref={canvasRef} draw={onDrawHandler} />
         </div>
     )
